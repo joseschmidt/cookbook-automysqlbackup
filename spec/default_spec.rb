@@ -1,6 +1,5 @@
 # coding: utf-8
-require 'chefspec'
-require 'chefspec/berkshelf'
+require 'spec_helper'
 
 describe 'automysqlbackup::default' do
   before do
