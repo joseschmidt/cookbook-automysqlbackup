@@ -1,7 +1,6 @@
 # coding: utf-8
 require 'chefspec'
 require 'chefspec/berkshelf'
-require 'chefspec/deprecations'
 
 describe 'automysqlbackup::default' do
   before do
@@ -47,9 +46,9 @@ describe 'automysqlbackup::default' do
 
   it 'should create /var/tmp/conf_dir/automysqlbackup_conf_file owned by root:root' do
     file = '/var/tmp/conf_dir/automysqlbackup_conf_file'
-    chef_run.should create_file_with_content file, 'automysqlbackup'
-    chef_run.should create_file_with_content file, 'automysqlbackup_password'
-    chef_run.should create_file_with_content file, '/var/tmp/backup_dir'
+    expect(chef_run).to render_file(file).with_content('automysqlbackup')
+    expect(chef_run).to render_file(file).with_content('automysqlbackup_password')
+    expect(chef_run).to render_file(file).with_content('/var/tmp/backup_dir')
     expect(chef_run.template(file).owner).to eq('root')
     expect(chef_run.template(file).group).to eq('root')
   end # it 'should create /var/tmp/conf_dir/automysqlbackup_conf_file...'
