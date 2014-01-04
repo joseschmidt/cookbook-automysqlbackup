@@ -8,6 +8,9 @@
       "git": "git://github.com/jhx/cookbook-helpers.git",
       "ref": "c7ffb62c1bf88e20a6a23a76edc492acab4a9a50"
     },
+    "build-essential": {
+      "locked_version": "1.3.2"
+    },
     "database": {
       "locked_version": "1.3.8"
     },
@@ -16,9 +19,6 @@
     },
     "openssl": {
       "locked_version": "1.0.0"
-    },
-    "build-essential": {
-      "locked_version": "1.3.2"
     },
     "postgresql": {
       "locked_version": "2.1.0"
