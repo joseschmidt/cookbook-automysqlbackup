@@ -9,6 +9,7 @@ describe 'automysqlbackup::default' do
         'root' => 'root_password'
       },
     })
+    Chef::EncryptedDataBagItem.stub(:load_secret).and_return('sekret')
   end # before
 
   let (:chef_run) do
