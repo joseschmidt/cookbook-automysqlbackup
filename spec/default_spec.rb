@@ -18,6 +18,7 @@ describe 'automysqlbackup::default' do
         'conf_dir' => '/var/tmp/conf_dir',
         'conf_file' => 'automysqlbackup_conf_file'
       }
+      node.set['platform_family'] = 'rhel'
     end.converge(described_recipe)
   end # let
 
