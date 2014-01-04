@@ -4,9 +4,9 @@
       "path": "."
     },
     "helpers": {
-      "locked_version": "0.1.4",
+      "locked_version": "0.1.5",
       "git": "git://github.com/jhx/cookbook-helpers.git",
-      "ref": "6033efbb96d9b81cc9d4823e6602f7ec4a072975"
+      "ref": "9f0e0aeeec7cd944e5f964f64688d779be550195"
     },
     "build-essential": {
       "locked_version": "1.3.2"
