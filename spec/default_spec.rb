@@ -15,6 +15,8 @@ describe 'automysqlbackup::default' do
     ChefSpec::Runner.new do |node|
       env = Chef::Environment.new
       env.name 'qa'
+      node.stub(:chef_environment).and_return env.name
+      Chef::Environment.stub(:load).and_return env
       node.set['automysqlbackup'] = {
         'backup_dir' => '/var/tmp/backup_dir',
         'conf_dir' => '/var/tmp/conf_dir',
