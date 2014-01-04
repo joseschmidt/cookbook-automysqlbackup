@@ -3,6 +3,12 @@ require 'spec_helper'
 
 describe 'automysqlbackup::default' do
   before do
+    # Chef::Recipe.any_instance.stub(:decrypt_data_bag).and_return({
+    #   'automysqlbackup' => 'automysqlbackup_password',
+    #   'mysql' => {
+    #     'root' => 'root_password'
+    #   },
+    # })
     Chef::EncryptedDataBagItem.stub(:load).and_return({
       'automysqlbackup' => 'automysqlbackup_password',
       'mysql' => {
@@ -30,7 +36,6 @@ describe 'automysqlbackup::default' do
         'conf_dir' => '/var/tmp/conf_dir',
         'conf_file' => 'automysqlbackup_conf_file'
       }
-      node.set['platform_family'] = 'rhel'
     end.converge(described_recipe)
   end # let
 
