@@ -3,19 +3,12 @@ require 'spec_helper'
 
 describe 'automysqlbackup::default' do
   before do
-    # Chef::Recipe.any_instance.stub(:decrypt_data_bag).and_return({
-    #   'automysqlbackup' => 'automysqlbackup_password',
-    #   'mysql' => {
-    #     'root' => 'root_password'
-    #   },
-    # })
-    Chef::EncryptedDataBagItem.stub(:load).and_return({
+    Chef::Sugar::DataBag.stub(:encrypted_data_bag_item).and_return({
       'automysqlbackup' => 'automysqlbackup_password',
       'mysql' => {
         'root' => 'root_password'
       },
     })
-    Chef::EncryptedDataBagItem.stub(:load_secret).and_return('sekret')
   end # before
 
   let (:chef_run) do
@@ -43,8 +36,8 @@ describe 'automysqlbackup::default' do
     expect(chef_run).to include_recipe('mysql::ruby')
   end # it
 
-  it 'should include recipe helpers' do
-    expect(chef_run).to include_recipe('helpers')
+  it 'should include recipe chef-sugar' do
+    expect(chef_run).to include_recipe('chef-sugar')
   end # it
 
   it 'should create /etc/cron.daily/automysqlbackup.sh owned by root:root' do
