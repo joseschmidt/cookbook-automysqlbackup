@@ -10,4 +10,5 @@ group :test do
   gem 'chef-sugar', '~> 1.1.0'
   gem 'chefspec', '~> 3.1.0.beta.1'
   gem 'foodcritic', '~> 3.0.3'
+  gem 'rubocop', '~> 0.16.0'
 end # group
