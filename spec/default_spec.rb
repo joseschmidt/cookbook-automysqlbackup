@@ -14,10 +14,17 @@ describe 'automysqlbackup::default' do
 
   let (:chef_run) do
     ChefSpec::Runner.new do |node|
+      # create a new environment
       env = Chef::Environment.new
       env.name 'qa'
-      node.stub(:chef_environment).and_return env.name
-      Chef::Environment.stub(:load).and_return env
+
+      # stub the node to return this environment
+      node.stub(:chef_environment).and_return(env.name)
+
+      # stub any calls to Environment.load to return this environment
+      Chef::Environment.stub(:load).and_return(env)
+
+      # override cookbook attributes
       node.set['automysqlbackup'] = {
         'backup_dir' => '/var/tmp/backup_dir',
         'conf_dir' => '/var/tmp/conf_dir',
