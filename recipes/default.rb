@@ -1,3 +1,4 @@
+# coding: utf-8
 #
 # Cookbook Name:: automysqlbackup
 # Recipe:: default
@@ -7,9 +8,9 @@
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
-# 
+#
 #     http://www.apache.org/licenses/LICENSE-2.0
-# 
+#
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -34,10 +35,12 @@ connection_info = {
 }
 
 
+# rubocop:disable LineLength
 # Download automysqlbackup script from:
 # http://surfnet.dl.sourceforge.net/project/automysqlbackup/AutoMySQLBackup/AutoMySQLBackup%20VER%202.5
 # http://sourceforge.net/projects/automysqlbackup/
 # and place in automysqlbackup/files/default/automysqlbackup.sh.
+# rubocop:enable LineLength
 cookbook_file ::File.join('', 'etc', 'cron.daily', 'automysqlbackup.sh') do
   source  'automysqlbackup-2.5.1-01.sh'
   owner   'root'

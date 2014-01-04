@@ -3,15 +3,15 @@ require 'spec_helper'
 
 describe 'automysqlbackup::default' do
   before do
-    Chef::Sugar::DataBag.stub(:encrypted_data_bag_item).and_return({
+    Chef::Sugar::DataBag.stub(:encrypted_data_bag_item).and_return(
       'automysqlbackup' => 'automysqlbackup_password',
       'mysql' => {
         'root' => 'root_password'
       },
-    })
+    )
   end # before
 
-  let (:chef_run) do
+  let(:chef_run) do
     ChefSpec::Runner.new do |node|
       # create a new environment
       env = Chef::Environment.new
@@ -57,10 +57,11 @@ describe 'automysqlbackup::default' do
     expect(chef_run.directory(dir).group).to eq('root')
   end # it
 
-  it 'should create /var/tmp/conf_dir/automysqlbackup_conf_file owned by root:root' do
+  it 'should create /var/.../automysqlbackup_conf_file owned by root:root' do
     file = '/var/tmp/conf_dir/automysqlbackup_conf_file'
     expect(chef_run).to render_file(file).with_content('automysqlbackup')
-    expect(chef_run).to render_file(file).with_content('automysqlbackup_password')
+    expect(chef_run).to render_file(file)
+      .with_content('automysqlbackup_password')
     expect(chef_run).to render_file(file).with_content('/var/tmp/backup_dir')
     expect(chef_run.template(file).owner).to eq('root')
     expect(chef_run.template(file).group).to eq('root')

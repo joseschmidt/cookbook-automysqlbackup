@@ -1,6 +1,7 @@
+# coding: utf-8
 #
 # Cookbook Name:: automysqlbackup
-# Attributes:: default 
+# Attributes:: default
 #
 
 # configuration file settings
