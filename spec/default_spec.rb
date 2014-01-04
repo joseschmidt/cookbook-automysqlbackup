@@ -22,23 +22,23 @@ describe 'automysqlbackup::default' do
   end # let
 
   it 'should include recipe mysql::ruby' do
-    chef_run.should include_recipe 'mysql::ruby'
+    expect(chef_run).to include_recipe('mysql::ruby')
   end # it
 
   it 'should include recipe helpers' do
-    chef_run.should include_recipe 'helpers'
+    expect(chef_run).to include_recipe('helpers')
   end # it
 
   it 'should create /etc/cron.daily/automysqlbackup.sh owned by root:root' do
     file = '/etc/cron.daily/automysqlbackup.sh'
-    chef_run.should create_cookbook_file file
+    expect(chef_run).to create_cookbook_file(file)
     expect(chef_run.cookbook_file(file).owner).to eq('root')
     expect(chef_run.cookbook_file(file).group).to eq('root')
   end # it
 
   it 'should create directory /var/tmp/conf_dir' do
     dir = '/var/tmp/conf_dir'
-    chef_run.should create_directory dir
+    expect(chef_run).to create_directory(dir)
     expect(chef_run.directory(dir).owner).to eq('root')
     expect(chef_run.directory(dir).group).to eq('root')
   end # it
@@ -54,7 +54,7 @@ describe 'automysqlbackup::default' do
 
   it 'should create directory /var/tmp/backup_dir' do
     dir = '/var/tmp/backup_dir'
-    chef_run.should create_directory dir
+    expect(chef_run).to create_directory(dir)
     expect(chef_run.directory(dir).owner).to eq('root')
     expect(chef_run.directory(dir).group).to eq('root')
   end # it
