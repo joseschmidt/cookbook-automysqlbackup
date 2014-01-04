@@ -9,4 +9,9 @@
 5. Verify the Travis-CI build passes
 6. Create new Pull Request
 
-Note: Pull requests will not be honored with insufficient specs or if `bundle exec rake` fails for any reason.
+Note: Pull requests will not be merged with insufficient specs or if `bundle exec rake` fails for any reason.
+
+Additionally, please **DO NOT**:
+
+- modify the version of the cookbook
+- update the CHANGELOG
