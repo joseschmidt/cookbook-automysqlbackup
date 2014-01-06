@@ -46,15 +46,13 @@ describe 'automysqlbackup::default' do
   it 'should create /etc/cron.daily/automysqlbackup.sh owned by root:root' do
     file = '/etc/cron.daily/automysqlbackup.sh'
     expect(chef_run).to create_cookbook_file(file)
-    expect(chef_run.cookbook_file(file).owner).to eq('root')
-    expect(chef_run.cookbook_file(file).group).to eq('root')
+      .with(:owner => 'root', :group => 'root')
   end # it
 
   it 'should create directory /var/tmp/conf_dir' do
     dir = '/var/tmp/conf_dir'
     expect(chef_run).to create_directory(dir)
-    expect(chef_run.directory(dir).owner).to eq('root')
-    expect(chef_run.directory(dir).group).to eq('root')
+      .with(:owner => 'root', :group => 'root')
   end # it
 
   it 'should create /var/.../automysqlbackup_conf_file owned by root:root' do
@@ -63,15 +61,14 @@ describe 'automysqlbackup::default' do
     expect(chef_run).to render_file(file)
       .with_content('automysqlbackup_password')
     expect(chef_run).to render_file(file).with_content('/var/tmp/backup_dir')
-    expect(chef_run.template(file).owner).to eq('root')
-    expect(chef_run.template(file).group).to eq('root')
+    expect(chef_run).to create_template(file)
+      .with(:owner => 'root', :group => 'root')
   end # it
 
   it 'should create directory /var/tmp/backup_dir' do
     dir = '/var/tmp/backup_dir'
     expect(chef_run).to create_directory(dir)
-    expect(chef_run.directory(dir).owner).to eq('root')
-    expect(chef_run.directory(dir).group).to eq('root')
+      .with(:owner => 'root', :group => 'root')
   end # it
 
   it 'should grant privileges to user automysqlbackup@localhost' do
