@@ -35,27 +35,27 @@ describe 'automysqlbackup::default' do
     end.converge(described_recipe)
   end # let
 
-  it 'should include recipe mysql::ruby' do
+  it 'includes recipe mysql::ruby' do
     expect(chef_run).to include_recipe('mysql::ruby')
   end # it
 
-  it 'should include recipe chef-sugar' do
+  it 'includes recipe chef-sugar' do
     expect(chef_run).to include_recipe('chef-sugar')
   end # it
 
-  it 'should create /etc/cron.daily/automysqlbackup.sh owned by root:root' do
+  it 'creates /etc/cron.daily/automysqlbackup.sh owned by root:root' do
     file = '/etc/cron.daily/automysqlbackup.sh'
     expect(chef_run).to create_cookbook_file(file)
       .with(:owner => 'root', :group => 'root')
   end # it
 
-  it 'should create directory /var/tmp/conf_dir' do
+  it 'creates directory /var/tmp/conf_dir' do
     dir = '/var/tmp/conf_dir'
     expect(chef_run).to create_directory(dir)
       .with(:owner => 'root', :group => 'root')
   end # it
 
-  it 'should create /var/.../automysqlbackup_conf_file owned by root:root' do
+  it 'creates /var/.../automysqlbackup_conf_file owned by root:root' do
     file = '/var/tmp/conf_dir/automysqlbackup_conf_file'
     expect(chef_run).to render_file(file).with_content('automysqlbackup')
     expect(chef_run).to render_file(file)
@@ -65,13 +65,13 @@ describe 'automysqlbackup::default' do
       .with(:owner => 'root', :group => 'root')
   end # it
 
-  it 'should create directory /var/tmp/backup_dir' do
+  it 'creates directory /var/tmp/backup_dir' do
     dir = '/var/tmp/backup_dir'
     expect(chef_run).to create_directory(dir)
       .with(:owner => 'root', :group => 'root')
   end # it
 
-  it 'should grant privileges to user automysqlbackup@localhost' do
+  it 'grants privileges to user automysqlbackup@localhost' do
     pending 'should grant privileges to user automysqlbackup@localhost'
   end # it
 
