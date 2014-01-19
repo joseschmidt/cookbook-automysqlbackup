@@ -78,7 +78,7 @@ Below is the structure of the `spec` and `test` directories:
         │       └── qa.json             # encrypted data bag for qa env
         ├── default                     # suite (based on recipe)
         │   └── serverspec              # busser
-        │       └── *_spec.rb           # suite tests
+        │       └── *_spec.rb           # suite specs
         ├── encrypted_data_bag_secret   # secret key for encrypted data bag
         ├── environments                # chef-zero environments
         │   └── qa.json                 # chef-zero qa environment
