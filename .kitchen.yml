@@ -36,4 +36,9 @@ suites:
     run_list:
       - 'recipe[mysql::server]'   # need to install mysql-server first
       - 'recipe[automysqlbackup]'
-    attributes: {}
+    attributes:
+      automysqlbackup:
+        conf_dir: /etc/automysqlbackup-qa
+        conf_file: automysqlbackup-qa.conf
+        backup_dir: /var/backup/db-qa
+        user: automysqlbackup-qa
