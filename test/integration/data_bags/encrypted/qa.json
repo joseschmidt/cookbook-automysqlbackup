@@ -1,0 +1,15 @@
+{
+  "id": "qa",
+  "automysqlbackup": {
+    "encrypted_data": "8z/7wHhetp6rIHCiz8lyD9aQg99LGaDaGE7uFA+PF6rLkUUSTCmf4gkOIGpx\nvlBh\n",
+    "iv": "kDetjb4OVIQv6B8ix3rJRQ==\n",
+    "version": 1,
+    "cipher": "aes-256-cbc"
+  },
+  "mysql": {
+    "encrypted_data": "KoIiqUHr0tav+xr/0CQdxeTpIvPbof5JNN5S1pHZkQ4J+MIK8kLt7BJe6PGv\n8Abk\n",
+    "iv": "IbopZRZl2QgUORV8zOdj/g==\n",
+    "version": 1,
+    "cipher": "aes-256-cbc"
+  }
+}
