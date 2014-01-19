@@ -27,7 +27,7 @@ Edit `encrypted/qa` data bag (opens separate editor window):
 $ knife data bag edit encrypted qa --local-mode --secret-file encrypted_data_bag_secret
 ````
 
-Create and store new `encrypted_data_bag_secret` (**WARNING**: modifications to `encrypted_data_bag_secret` will render existing encrypted data bags unreadable):
+Create new `encrypted_data_bag_secret` (**WARNING**: modifications to `encrypted_data_bag_secret` will render existing encrypted data bags unreadable):
 
 ````bash
 $ openssl rand -base64 512 | tr -d '\r\n' > encrypted_data_bag_secret
