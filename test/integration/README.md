@@ -22,11 +22,21 @@ WARN: No cookbooks directory found at or above current directory.  Assuming /...
 }
 ````
 
-Edit `encrypted/qa` data bag:
+Edit `encrypted/qa` data bag (opens separate editor window):
 ````bash
 $ knife data bag edit encrypted qa --local-mode --secret-file encrypted_data_bag_secret
 ````
-(opens separate editor window)
+
+Create and store new `encrypted_data_bag_secret`:
+
+````bash
+$ openssl rand -base64 512 | tr -d '\r\n' > encrypted_data_bag_secret
+````
+
+Create new `encrypted/example` data bag (opens separate editor window):
+````bash
+$ knife data bag create encrypted example --local-mode --secret-file encrypted_data_bag_secret
+````
 
 
 Environments
@@ -52,8 +62,7 @@ WARN: No cookbooks directory found at or above current directory.  Assuming /...
 }
 ````
 
-Edit `qa` environment:
+Edit `qa` environment (opens separate editor window):
 ````bash
 $ knife environment edit qa --local-mode
 ````
-(opens separate editor window)
