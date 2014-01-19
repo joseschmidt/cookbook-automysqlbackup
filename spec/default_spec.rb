@@ -72,7 +72,7 @@ describe 'automysqlbackup::default' do
   end # it
 
   it 'grants privileges to user automysqlbackup@localhost' do
-    pending 'should grant privileges to user automysqlbackup@localhost'
+    pending 'grants privileges to user automysqlbackup@localhost'
   end # it
 
 end # describe
