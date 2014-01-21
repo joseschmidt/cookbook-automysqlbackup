@@ -29,21 +29,22 @@ Once installed, you must install the `vagrant-berkshelf` plugin:
 
 Development
 -----------
-1. Clone the git repository from GitHub:
+
+- Clone the git repository from GitHub:
 
         $ git clone git@github.com:jhx/COOKBOOK.git
 
-1. Install the dependencies using bundler:
+- Install the dependencies using bundler:
 
         $ bundle install
 
-1. Create a branch for your changes:
+- Create a branch for your changes:
 
         $ git checkout -b my_bug_fix
 
-1. Make any changes
-1. Write tests to support those changes. It is highly recommended you write both unit and integration tests.
-1. Run the tests:
+- Make any changes
+- Write tests to support those changes. It is highly recommended you write both unit and integration tests.
+- Run the tests:
 
     - `bundle exec rake`
 
@@ -55,7 +56,7 @@ Development
     - `bundle exec rake chefspec`
     - `bundle exec rake kitchen`
 
-7. Assuming the tests pass, open a Pull Request on GitHub
+- Assuming the tests pass, open a Pull Request on GitHub
 
 
 Directory structure
