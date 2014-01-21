@@ -4,6 +4,7 @@ CHANGELOG
 TBD
 ------------------
 
+- `NEW` add emeril gem to publish cookbook | [#48][]
 - `IMPROVE` update Gemfile to remove redundant gems | [#38][]
 - `IMPROVE` require rspec expect syntax | [#36][]
 - `NEW` add [TESTING](TESTING.md) | [#32][]
@@ -52,3 +53,4 @@ Legend
 [#38]: https://github.com/jhx/cookbook-automysqlbackup/issues/38
 [#40]: https://github.com/jhx/cookbook-automysqlbackup/issues/40
 [#44]: https://github.com/jhx/cookbook-automysqlbackup/issues/44
+[#48]: https://github.com/jhx/cookbook-automysqlbackup/issues/48
