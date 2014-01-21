@@ -32,7 +32,7 @@ platforms:
       box: opscode-centos-6.5-chef-11.8.2
 
 suites:
-  - name: default
+  - name: automysqlbackup
     run_list:
       - 'recipe[mysql::server]'   # need to install mysql-server first
       - 'recipe[automysqlbackup]'
