@@ -7,7 +7,7 @@ This document describes how to use chef-zero to access data from the `test/integ
 Data Bags
 ---------
 
-Display contents of `encrypted/qa` data bag:
+Display contents of [`encrypted/qa`](data_bags/encrypted/qa.json) data bag:
 
 ````bash
 $ knife data bag show encrypted qa --local-mode --format json --secret-file encrypted_data_bag_secret
@@ -22,12 +22,12 @@ WARN: No cookbooks directory found at or above current directory.  Assuming /...
 }
 ````
 
-Edit `encrypted/qa` data bag (opens separate editor window):
+Edit [`encrypted/qa`](data_bags/encrypted/qa.json) data bag (opens separate editor window):
 ````bash
 $ knife data bag edit encrypted qa --local-mode --secret-file encrypted_data_bag_secret
 ````
 
-Create new `encrypted_data_bag_secret` (**WARNING**: modifications to `encrypted_data_bag_secret` will render existing encrypted data bags unreadable):
+Create new [`encrypted_data_bag_secret`](encrypted_data_bag_secret) (**WARNING**: modifications to `encrypted_data_bag_secret` will render existing encrypted data bags unreadable):
 
 ````bash
 $ openssl rand -base64 512 | tr -d '\r\n' > encrypted_data_bag_secret
@@ -42,7 +42,7 @@ $ knife data bag create encrypted example --local-mode --secret-file encrypted_d
 Environments
 ------------
 
-Display contents of `qa` environment:
+Display contents of [`qa`](environments/qa.json) environment:
 
 ````bash
 $ knife environment show qa --local-mode --format json
@@ -62,7 +62,7 @@ WARN: No cookbooks directory found at or above current directory.  Assuming /...
 }
 ````
 
-Edit `qa` environment (opens separate editor window):
+Edit [`qa`](environments/qa.json) environment (opens separate editor window):
 ````bash
 $ knife environment edit qa --local-mode
 ````
