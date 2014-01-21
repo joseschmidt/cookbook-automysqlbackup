@@ -1,7 +1,7 @@
 CHANGELOG
 =========
 
-TBD
+0.2.0 / 2014-01-20
 ------------------
 
 - `NEW` add emeril gem to publish cookbook | [#48][]
