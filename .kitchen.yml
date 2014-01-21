@@ -11,16 +11,6 @@ provisioner:
   environments_path: test/integration/environments
 
 platforms:
-  # default opscode-centos-5.10 box prior to chef installation
-  - name: centos-5.10-opscode
-    driver:
-      box: opscode-centos-5.10
-
-  # default opscode-centos-6.5 box prior to chef installation
-  - name: centos-6.5-opscode
-    driver:
-      box: opscode-centos-6.5
-
   # locally-provisioned opscode-centos-5.10 box with omnibus chef 11.8.2
   - name: centos-5.10-chef-11.8.2
     driver:
@@ -32,7 +22,7 @@ platforms:
       box: opscode-centos-6.5-chef-11.8.2
 
 suites:
-  - name: default
+  - name: automysqlbackup
     run_list:
       - 'recipe[mysql::server]'   # need to install mysql-server first
       - 'recipe[automysqlbackup]'
