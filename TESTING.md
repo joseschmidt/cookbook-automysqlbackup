@@ -67,18 +67,18 @@ Below is the structure of the `spec` and `test` directories:
 ├── spec                                # unit tests
 │   ├── chef
 │   │   └── knife.rb                    # knife configuration
-│   ├── *_spec.rb                       # recipe specs
+│   ├── *_spec.rb                       # recipe specs (match recipe name)
 │   ├── foodcritic                      # custom foodcritic rules
 │   └── spec_helper.rb
 └── test
     └── integration                     # integration tests
         ├── README.md                   # chef-zero usage notes
+        ├── automysqlbackup             # suite (match cookbook name)
+        │   └── serverspec              # busser
+        │       └── *_spec.rb           # suite specs (match recipe name)
         ├── data_bags                   # chef-zero data bags
         │   └── encrypted               # encrypted data bags
         │       └── qa.json             # encrypted data bag for qa env
-        ├── default                     # suite (based on recipe)
-        │   └── serverspec              # busser
-        │       └── *_spec.rb           # suite specs
         ├── encrypted_data_bag_secret   # secret key for encrypted data bag
         ├── environments                # chef-zero environments
         │   └── qa.json                 # chef-zero qa environment
