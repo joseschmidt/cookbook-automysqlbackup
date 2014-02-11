@@ -7,7 +7,7 @@ describe 'automysqlbackup::default' do
       'automysqlbackup' => 'automysqlbackup_password',
       'mysql' => {
         'root' => 'root_password'
-      },
+      }
     )
   end # before
 
