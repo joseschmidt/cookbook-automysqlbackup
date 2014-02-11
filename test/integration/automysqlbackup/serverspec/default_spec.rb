@@ -102,8 +102,9 @@ describe 'automysqlbackup::default' do
     end # it
 
     it 'returns expected GRANT statement' do
-      expect(subject.stdout).to match('GRANT SELECT, LOCK TABLES ON ' +
-        "\*\.\* TO 'automysqlbackup'@'localhost'")
+      expect(subject.stdout).to include(
+        "GRANT SELECT, LOCK TABLES ON *.* TO 'automysqlbackup'@'localhost'"
+    )
     end # it
   end # context
 
