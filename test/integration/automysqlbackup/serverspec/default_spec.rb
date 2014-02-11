@@ -2,7 +2,7 @@
 require 'spec_helper'
 
 describe 'automysqlbackup::default' do
-  context file('/etc/cron.daily/automysqlbackup.sh') do
+  describe file('/etc/cron.daily/automysqlbackup.sh') do
     it 'is file' do
       expect(subject).to be_file
     end # it
@@ -22,9 +22,9 @@ describe 'automysqlbackup::default' do
     it 'matches expected content' do
       expect(subject.content).to match('MySQL Backup Script')
     end # it
-  end # context
+  end # describe
 
-  context file('/etc/automysqlbackup-qa') do
+  describe file('/etc/automysqlbackup-qa') do
     it 'is directory' do
       expect(subject).to be_directory
     end # it
@@ -40,9 +40,9 @@ describe 'automysqlbackup::default' do
     it 'is mode 755' do
       expect(subject).to be_mode(755)
     end # it
-  end # context
+  end # describe
 
-  context file('/etc/automysqlbackup-qa/automysqlbackup-qa.conf') do
+  describe file('/etc/automysqlbackup-qa/automysqlbackup-qa.conf') do
     it 'is file' do
       expect(subject).to be_file
     end # it
@@ -70,9 +70,9 @@ describe 'automysqlbackup::default' do
     it 'matches expected BACKUPDIR' do
       expect(subject.content).to match('BACKUPDIR="/var/backup/db-qa"')
     end # it
-  end # context
+  end # describe
 
-  context file('/var/backup/db-qa') do
+  describe file('/var/backup/db-qa') do
     it 'is directory' do
       expect(subject).to be_directory
     end # it
@@ -88,7 +88,7 @@ describe 'automysqlbackup::default' do
     it 'is mode 700' do
       expect(subject).to be_mode(700)
     end # it
-  end # context
+  end # describe
 
   cmd = []
   cmd << 'mysql'
@@ -96,7 +96,7 @@ describe 'automysqlbackup::default' do
   cmd << '--password=automysqlbackup_password'
   cmd << '--database mysql'
   cmd << '--execute="show grants for automysqlbackup@localhost;"'
-  context command(cmd.join(' ')) do
+  describe command(cmd.join(' ')) do
     it 'returns exit status 0' do
       expect(subject).to return_exit_status(0)
     end # it
@@ -106,6 +106,6 @@ describe 'automysqlbackup::default' do
         "GRANT SELECT, LOCK TABLES ON *.* TO 'automysqlbackup'@'localhost'"
     )
     end # it
-  end # context
+  end # describe
 
 end # describe

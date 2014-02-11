@@ -24,11 +24,9 @@ describe 'automysqlbackup::default' do
       Chef::Environment.stub(:load).and_return(env)
 
       # override cookbook attributes
-      node.set['automysqlbackup'] = {
-        'backup_dir' => '/var/tmp/backup_dir',
-        'conf_dir' => '/var/tmp/conf_dir',
-        'conf_file' => 'automysqlbackup_conf_file'
-      }
+      node.set['automysqlbackup']['backup_dir'] = '/var/tmp/backup_dir'
+      node.set['automysqlbackup']['conf_dir'] = '/var/tmp/conf_dir'
+      node.set['automysqlbackup']['conf_file'] = 'automysqlbackup_conf_file'
 
       # required for build-essential cookbook on travis-ci
       node.set['platform_family'] = 'rhel'
