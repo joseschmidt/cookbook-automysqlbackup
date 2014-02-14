@@ -19,8 +19,8 @@ describe 'automysqlbackup::default' do
       expect(subject).to be_mode(755)
     end # it
 
-    it 'matches expected content' do
-      expect(subject.content).to match('MySQL Backup Script')
+    it 'includes expected content' do
+      expect(subject.content).to include('MySQL Backup Script')
     end # it
   end # describe
 
@@ -59,16 +59,16 @@ describe 'automysqlbackup::default' do
       expect(subject).to be_mode(600)
     end # it
 
-    it 'matches expected USERNAME' do
-      expect(subject.content).to match('USERNAME=automysqlbackup-qa')
+    it 'includes expected USERNAME' do
+      expect(subject.content).to include('USERNAME=automysqlbackup-qa')
     end # it
 
-    it 'matches expected PASSWORD' do
-      expect(subject.content).to match('PASSWORD=automysqlbackup_password')
+    it 'includes expected PASSWORD' do
+      expect(subject.content).to include('PASSWORD=automysqlbackup_password')
     end # it
 
-    it 'matches expected BACKUPDIR' do
-      expect(subject.content).to match('BACKUPDIR="/var/backup/db-qa"')
+    it 'includes expected BACKUPDIR' do
+      expect(subject.content).to include('BACKUPDIR="/var/backup/db-qa"')
     end # it
   end # describe
 
