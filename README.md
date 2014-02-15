@@ -1,6 +1,7 @@
 automysqlbackup Cookbook
 ========================
 [![Build Status](https://travis-ci.org/jhx/cookbook-automysqlbackup.png?branch=master)](https://travis-ci.org/jhx/cookbook-automysqlbackup)
+[![Dependency Status](https://gemnasium.com/jhx/cookbook-automysqlbackup.png)](https://gemnasium.com/jhx/cookbook-automysqlbackup)
 
 Installs and configures automysqlbackup (MySQL backup tool).
 
