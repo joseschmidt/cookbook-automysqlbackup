@@ -41,33 +41,48 @@ describe 'automysqlbackup::default' do
     expect(chef_run).to include_recipe('chef-sugar')
   end # it
 
-  it 'creates /etc/cron.daily/automysqlbackup.sh owned by root:root' do
-    file = '/etc/cron.daily/automysqlbackup.sh'
-    expect(chef_run).to create_cookbook_file(file)
-      .with(:owner => 'root', :group => 'root')
+  describe '/etc/cron.daily/automysqlbackup.sh' do
+    it 'creates file with expected owner, group' do
+      expect(chef_run).to create_cookbook_file(subject)
+        .with(:owner => 'root', :group => 'root')
+    end # it
+  end # describe
+
+  describe '/var/tmp/conf_dir' do
+    it 'creates directory with expected owner, group' do
+      expect(chef_run).to create_directory(subject)
+        .with(:owner => 'root', :group => 'root')
+    end # it
+  end # describe
+
+  describe '/var/tmp/conf_dir/automysqlbackup_conf_file' do
+    it 'renders file with expected USERNAME' do
+      expect(chef_run).to render_file(subject)
+        .with_content('USERNAME=automysqlbackup')
+    end # it
+
+    it 'renders file with expected PASSWORD' do
+      expect(chef_run).to render_file(subject)
+        .with_content('PASSWORD=automysqlbackup_password')
+    end # it
+
+    it 'renders file with expected BACKUPDIR' do
+      expect(chef_run).to render_file(subject)
+        .with_content('BACKUPDIR="/var/tmp/backup_dir"')
+    end # it
+
+    it 'creates template with expected owner, group' do
+      expect(chef_run).to create_template(subject)
+        .with(:owner => 'root', :group => 'root')
+    end # it
   end # it
 
-  it 'creates directory /var/tmp/conf_dir' do
-    dir = '/var/tmp/conf_dir'
-    expect(chef_run).to create_directory(dir)
-      .with(:owner => 'root', :group => 'root')
-  end # it
-
-  it 'creates /var/.../automysqlbackup_conf_file owned by root:root' do
-    file = '/var/tmp/conf_dir/automysqlbackup_conf_file'
-    expect(chef_run).to render_file(file).with_content('automysqlbackup')
-    expect(chef_run).to render_file(file)
-      .with_content('automysqlbackup_password')
-    expect(chef_run).to render_file(file).with_content('/var/tmp/backup_dir')
-    expect(chef_run).to create_template(file)
-      .with(:owner => 'root', :group => 'root')
-  end # it
-
-  it 'creates directory /var/tmp/backup_dir' do
-    dir = '/var/tmp/backup_dir'
-    expect(chef_run).to create_directory(dir)
-      .with(:owner => 'root', :group => 'root')
-  end # it
+  describe '/var/tmp/backup_dir' do
+    it 'creates directory with expected owner, group' do
+      expect(chef_run).to create_directory(subject)
+        .with(:owner => 'root', :group => 'root')
+    end # it
+  end # describe
 
   it 'grants privileges to user automysqlbackup@localhost' do
     pending 'grants privileges to user automysqlbackup@localhost'
