@@ -1,4 +1,4 @@
-# coding: utf-8
+# encoding: utf-8
 name              'automysqlbackup'
 version           '0.2.0'
 
