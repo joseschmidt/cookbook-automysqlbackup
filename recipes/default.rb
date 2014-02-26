@@ -82,8 +82,8 @@ end # directory item['backup_dir'] do
 # grant privileges to user 'automysqlbackup' for automatic backups
 mysql_database_user 'automysqlbackup' do
   connection connection_info
-  password secret['automysqlbackup']
   host 'localhost'
+  password secret['automysqlbackup']
   privileges ['SELECT', 'LOCK TABLES']
   action :grant
   only_if { secret['automysqlbackup'] }
