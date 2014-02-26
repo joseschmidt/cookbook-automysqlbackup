@@ -75,7 +75,7 @@ describe 'automysqlbackup::default' do
       expect(chef_run).to create_template(subject)
         .with(:owner => 'root', :group => 'root')
     end # it
-  end # it
+  end # describe
 
   describe '/var/tmp/backup_dir' do
     it 'creates directory with expected owner, group' do
