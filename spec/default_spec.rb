@@ -46,20 +46,25 @@ describe 'automysqlbackup::default' do
   end # describe
 
   describe '/etc/cron.daily/automysqlbackup.sh' do
-    it 'creates file with expected owner, group' do
+    it 'creates file with expected owner, group, mode' do
       expect(chef_run).to create_cookbook_file(subject)
-        .with(:owner => 'root', :group => 'root')
+        .with(:owner => 'root', :group => 'root', :mode => '0755')
     end # it
   end # describe
 
   describe '/var/tmp/conf_dir' do
-    it 'creates directory with expected owner, group' do
+    it 'creates directory with expected owner, group, mode' do
       expect(chef_run).to create_directory(subject)
-        .with(:owner => 'root', :group => 'root')
+        .with(:owner => 'root', :group => 'root', :mode => '0755')
     end # it
   end # describe
 
   describe '/var/tmp/conf_dir/automysqlbackup_conf_file' do
+    it 'creates template with expected owner, group, mode' do
+      expect(chef_run).to create_template(subject)
+        .with(:owner => 'root', :group => 'root', :mode => '0600')
+    end # it
+
     it 'renders file with expected USERNAME' do
       expect(chef_run).to render_file(subject)
         .with_content('USERNAME=automysqlbackup')
@@ -74,17 +79,12 @@ describe 'automysqlbackup::default' do
       expect(chef_run).to render_file(subject)
         .with_content('BACKUPDIR="/var/tmp/backup_dir"')
     end # it
-
-    it 'creates template with expected owner, group' do
-      expect(chef_run).to create_template(subject)
-        .with(:owner => 'root', :group => 'root')
-    end # it
   end # describe
 
   describe '/var/tmp/backup_dir' do
-    it 'creates directory with expected owner, group' do
+    it 'creates directory with expected owner, group, mode' do
       expect(chef_run).to create_directory(subject)
-        .with(:owner => 'root', :group => 'root')
+        .with(:owner => 'root', :group => 'root', :mode => '0700')
     end # it
   end # describe
 
