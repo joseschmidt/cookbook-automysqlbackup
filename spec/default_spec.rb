@@ -84,8 +84,14 @@ describe 'automysqlbackup::default' do
     end # it
   end # describe
 
-  it 'grants privileges to user automysqlbackup@localhost' do
-    pending 'grants privileges to user automysqlbackup@localhost'
-  end # it
+  describe 'automysqlbackup' do
+    it 'grants user access to mysql database with expected options' do
+      expect(chef_run).to grant_mysql_database_user(subject)
+        .with_username(subject)
+        .with_host('localhost')
+        .with_password("#{subject}_password")
+        .with_privileges(['SELECT', 'LOCK TABLES'])
+    end # it
+  end # describe
 
 end # describe
