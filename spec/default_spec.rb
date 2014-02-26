@@ -33,13 +33,17 @@ describe 'automysqlbackup::default' do
     end.converge(described_recipe)
   end # let
 
-  it 'includes recipe mysql::ruby' do
-    expect(chef_run).to include_recipe('mysql::ruby')
-  end # it
+  describe 'mysql::ruby' do
+    it 'includes described recipe' do
+      expect(chef_run).to include_recipe(subject)
+    end # it
+  end # describe
 
-  it 'includes recipe chef-sugar' do
-    expect(chef_run).to include_recipe('chef-sugar')
-  end # it
+  describe 'chef-sugar' do
+    it 'includes described recipe' do
+      expect(chef_run).to include_recipe(subject)
+    end # it
+  end # describe
 
   describe '/etc/cron.daily/automysqlbackup.sh' do
     it 'creates file with expected owner, group' do
