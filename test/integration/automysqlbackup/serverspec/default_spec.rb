@@ -3,7 +3,7 @@ require 'spec_helper'
 
 describe 'automysqlbackup::default' do
   describe file('/etc/cron.daily/automysqlbackup.sh') do
-    it 'is file' do
+    it 'is a file' do
       expect(subject).to be_file
     end # it
 
@@ -43,7 +43,7 @@ describe 'automysqlbackup::default' do
   end # describe
 
   describe file('/etc/automysqlbackup-qa/automysqlbackup-qa.conf') do
-    it 'is file' do
+    it 'is a file' do
       expect(subject).to be_file
     end # it
 
