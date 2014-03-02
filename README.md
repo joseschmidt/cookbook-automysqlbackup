@@ -11,9 +11,9 @@ Requirements
 ### Cookbooks
 The following cookbooks are direct dependencies because they're used for common "default" functionality.
 
-- `chef-sugar`
-- `database`
-- `mysql`
+- [`chef-sugar`](https://github.com/sethvargo/chef-sugar)
+- [`database`](https://github.com/opscode-cookbooks/database)
+- [`mysql`](https://github.com/opscode-cookbooks/mysql)
 
 ### Platforms
 The following platforms are supported and tested under Test Kitchen:
