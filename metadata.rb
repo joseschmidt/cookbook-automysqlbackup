@@ -13,9 +13,10 @@ recipe            'automysqlbackup',
                   'Installs and configures automysqlbackup'
 
 #------------------------------------------------------- cookbook dependencies
+depends           'build-essential', '~> 1.4.4'
 depends           'chef-sugar'
-depends           'database'
-depends           'mysql'
+depends           'database', '~> 1.3.12'
+depends           'mysql', '~> 2.1.0'
 
 #--------------------------------------------------------- supported platforms
 # tested
