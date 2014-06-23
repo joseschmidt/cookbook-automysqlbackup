@@ -3,12 +3,13 @@ require 'spec_helper'
 
 describe 'automysqlbackup::default' do
   before do
-    Chef::Sugar::DataBag.stub(:encrypted_data_bag_item).and_return(
-      'automysqlbackup' => 'automysqlbackup_password',
-      'mysql' => {
-        'root' => 'root_password'
-      }
-    )
+    allow(Chef::Sugar::DataBag).to receive(:encrypted_data_bag_item)
+      .and_return(
+        'automysqlbackup' => 'automysqlbackup_password',
+        'mysql' => {
+          'root' => 'root_password'
+        }
+      )
   end # before
 
   let(:chef_run) do
@@ -18,10 +19,10 @@ describe 'automysqlbackup::default' do
       env.name 'qa'
 
       # stub the node to return this environment
-      node.stub(:chef_environment).and_return(env.name)
+      allow(node).to receive(:chef_environment).and_return(env.name)
 
       # stub any calls to Environment.load to return this environment
-      Chef::Environment.stub(:load).and_return(env)
+      allow(Chef::Environment).to receive(:load).and_return(env)
 
       # override cookbook attributes
       node.set['automysqlbackup']['backup_dir'] = '/var/tmp/backup_dir'
